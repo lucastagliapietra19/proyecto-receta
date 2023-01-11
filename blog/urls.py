@@ -26,3 +26,5 @@ urlpatterns = [
     path('recetas/mensajes/<int:pk>/detalle/', MensajeDetalle.as_view(), name="recetas-mensajes-detalle"),
     path('recetas/mensajes/listar/', MensajeListar.as_view(), name="recetas-mensajes-listar"),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
