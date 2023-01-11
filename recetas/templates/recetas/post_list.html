@@ -3,7 +3,7 @@
 {% block contenido %} 
 {% if user.is_authenticated %}
     <a href="{% url 'recetas-crear' %}">Crear Post</a>
-    <a href="{% url 'recetas-avatars-actualizar' user.avatar.id %}">Actualizar Avatar</a>
+    
     <a href="{% url 'recetas-users-actualizar' user.id %}">Actualizar Usuario</a>
     
 {% endif %}
