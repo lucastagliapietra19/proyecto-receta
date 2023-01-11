@@ -6,7 +6,7 @@ from django.views.generic import TemplateView
 from recetas.views import (index, PostDetalle, PostListar, 
                                PostCrear, PostBorrar, PostActualizar,
                                UserSignUp, UserLogin, UserLogout, 
-                               AvatarActualizar, UserActualizar, MensajeCrear, MensajeListar, MensajeDetalle )
+                               AvatarActualizar, UserActualizar, MensajeCrear, MensajeListar, MensajeDetalle, AboutListar )
 from django.contrib.admin.views.decorators import staff_member_required
 
 urlpatterns = [
@@ -25,6 +25,7 @@ urlpatterns = [
     path('recetas/mensajes/crear/', MensajeCrear.as_view(), name="recetas-mensajes-crear"),
     path('recetas/mensajes/<int:pk>/detalle/', MensajeDetalle.as_view(), name="recetas-mensajes-detalle"),
     path('recetas/mensajes/listar/', MensajeListar.as_view(), name="recetas-mensajes-listar"),
+    path('recetas/about/', AboutListar.as_view(), name= "recetas-about"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

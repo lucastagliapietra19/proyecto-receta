@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from recetas.forms import UsuarioForm
-from recetas.models import Avatar, Post, Mensaje
+from recetas.models import Avatar, Post, Mensaje, About
 from django.contrib.auth.admin import User
 
 
@@ -72,3 +72,6 @@ class MensajeCrear(CreateView):
 class MensajeBorrar(LoginRequiredMixin, DeleteView):
     model = Mensaje
     success_url = reverse_lazy("recetas-mensajes-listar")
+
+class  AboutListar(ListView):
+    model = About
