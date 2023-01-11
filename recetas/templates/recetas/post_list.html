@@ -1,7 +1,14 @@
 {% extends 'recetas/base.html' %}
 
 {% block contenido %}
-    
+{% if user.is_authenticated %}
+    <a href="{% url 'recetas-crear' %}">Crear Post</a>
+    {% if user.avatar.imagen %}
+        <a href="{% url 'recetas-avatars-actualizar' user.avatar.id %}">Actualizar Avatar</a>
+    {% endif %}
+    <a href="{% url 'recetas-users-actualizar' user.id %}">Actualizar Profile</a>
+    <a href="{% url 'recetas-dos-mensajes-listar' %}">Mensajes</a>
+{% endif %}
 <ul>
 {% for post in object_list %}
     <li>
@@ -9,7 +16,8 @@
         {% if user.is_superuser %}
             <a href="{% url 'recetas-borrar' post.id %}">Borrar</a>
             <a href="{% url 'recetas-actualizar' post.id %}">Actualizar</a>
-            <a href="{% url 'recetas-detalle' post.id %}">Ver</a>
+        {% endif %}
+        <a href="{% url 'recetas-detalle' post.id %}">Ver</a>
     </li>
 {% endfor %}
 </ul>
