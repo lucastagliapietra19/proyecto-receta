@@ -4,7 +4,6 @@ from recetas.models import Post
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
 from recetas.forms import UsuarioForm
 from recetas.models import Avatar, Post, Mensaje, About
 from django.contrib.auth.admin import User
@@ -17,10 +16,10 @@ def index(request):
 class PostDetalle(DetailView):
     model = Post
 
-class PostListar(ListView):
+class PostList(LoginRequiredMixin, ListView):
     model = Post  
 
-class PostCrear(LoginRequiredMixin, CreateView):
+class PostCrear(CreateView):
     model = Post
     success_url = reverse_lazy("recetas-listar")
     fields = '__all__'

@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
-from recetas.views import (index, PostDetalle, PostListar, 
+from recetas.views import (index, PostDetalle, PostList, 
                                PostCrear, PostBorrar, PostActualizar,
                                UserSignUp, UserLogin, UserLogout, 
                                AvatarActualizar, UserActualizar, MensajeCrear, MensajeListar, MensajeDetalle, AboutListar )
@@ -13,7 +13,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('recetas/', index, name="recetas-index"),
     path('recetas/<int:pk>/detalle/', PostDetalle.as_view(), name="recetas-detalle"),
-    path('recetas/listar/', PostListar.as_view(), name="recetas-listar"),
+    path('recetas/listar/', PostList.as_view(), name="recetas-listar"),
     path('recetas/crear/',PostCrear.as_view(), name="recetas-crear"),
     path('recetas/<int:pk>/borrar/',PostBorrar.as_view(), name="recetas-borrar"),
     path('recetas/<int:pk>/actualizar/',PostActualizar.as_view(), name="recetas-actualizar"),
