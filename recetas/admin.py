@@ -1,3 +1,4 @@
 from django.contrib import admin
+from recetas.models import Avatar
 
-# Register your models here.
+admin.site.register(Avatar)
