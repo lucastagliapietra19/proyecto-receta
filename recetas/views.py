@@ -9,23 +9,27 @@ from recetas.forms import UsuarioForm
 from recetas.models import Avatar, Post, Mensaje
 from django.contrib.auth.admin import User
 
+
 def index(request):
-    return render(request, "recetas/index.html",{} )
+    posts = Post.objects.order_by('-publicado_el').all()
+    return render(request, "recetas/index.html", {"posts": posts})
 
-class PostList(ListView):
-    model= Post
-    template_name = "/recetas/post_list.html"
-
-class PostCrear(LoginRequiredMixin, CreateView):
+class PostDetalle(DetailView):
     model = Post
-    success_url =reverse_lazy("recetas-listar")
+
+class PostListar(ListView):
+    model = Post  
+
+class PostCrear(CreateView):
+    model = Post
+    success_url = reverse_lazy("recetas-listar")
     fields = '__all__'
 
-class PostBorrar(LoginRequiredMixin, DeleteView):
+class PostBorrar(DeleteView):
     model = Post
     success_url = reverse_lazy("recetas-listar")
 
-class PostActualizar(LoginRequiredMixin, UpdateView):
+class PostActualizar(UpdateView):
     model = Post
     success_url = reverse_lazy("recetas-listar")
     fields = "__all__"
@@ -33,9 +37,9 @@ class PostActualizar(LoginRequiredMixin, UpdateView):
 class UserSignUp(CreateView):
     form_class = UsuarioForm
     template_name = 'registration/signup.html'
-    success_url = reverse_lazy('ejemplo-dos-listar')
+    success_url = reverse_lazy('recetas-listar')
 
-#http://localhost:8000/ejemplo-dos/login/?next=/ejemplo-dos/listar/
+
 class UserLogin(LoginView):
     next_page = reverse_lazy('recetas-listar')
 

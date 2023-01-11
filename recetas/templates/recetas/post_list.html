@@ -7,7 +7,7 @@
         <a href="{% url 'recetas-avatars-actualizar' user.avatar.id %}">Actualizar Avatar</a>
     {% endif %}
     <a href="{% url 'recetas-users-actualizar' user.id %}">Actualizar Profile</a>
-    <a href="{% url 'recetas-dos-mensajes-listar' %}">Mensajes</a>
+    <a href="{% url 'recetas-mensajes-listar' %}">Mensajes</a>
 {% endif %}
 <ul>
 {% for post in object_list %}
