@@ -22,14 +22,15 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'recetas-mensajes-crear' %}">Contacto</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
                         
                         <li class="nav-item"><a class="nav-link" href="{% url 'recetas-signup' %}">Registrarse</a></li>
                         {% if user.is_authenticated %}
-                            <li class="nav-item"><a class="nav-link" href="{% url 'recetas-login' %}">Ingresar</a></li>
-                        {% else %}
                             <li class="nav-item"><a class="nav-link" href="{% url 'recetas-logout' %}">Salir</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'recetas-logout' %}">Salir</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'recetas-login' %}">Ingresar</a></li>
                         {% endif %}
                     </ul>
                 </div>

@@ -20,16 +20,16 @@ class PostDetalle(DetailView):
 class PostListar(ListView):
     model = Post  
 
-class PostCrear(CreateView):
+class PostCrear(LoginRequiredMixin, CreateView):
     model = Post
     success_url = reverse_lazy("recetas-listar")
     fields = '__all__'
 
-class PostBorrar(DeleteView):
+class PostBorrar(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy("recetas-listar")
 
-class PostActualizar(UpdateView):
+class PostActualizar(LoginRequiredMixin, UpdateView):
     model = Post
     success_url = reverse_lazy("recetas-listar")
     fields = "__all__"
