@@ -13,6 +13,7 @@ def index(request):
     posts = Post.objects.order_by('-publicado_el').all()
     return render(request, "recetas/index.html", {"posts": posts})
 
+
 class PostDetalle(DetailView):
     model = Post
 
